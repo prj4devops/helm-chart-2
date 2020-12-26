@@ -164,6 +164,7 @@ spec:
           image: "{{ .Values.master.image }}:{{ .Values.master.tag }}"
 {{- end }}
           imagePullPolicy: "{{ .Values.master.imagePullPolicy }}"
+          args: ["--sessionTimeout=1440", "--sessionEviction=86400"]
           {{- if .Values.master.httpsKeyStore.enable }}
           {{- $httpsJKSFilePath :=  printf "%s/%s" .Values.master.httpsKeyStore.path .Values.master.httpsKeyStore.fileName -}}
               {{- if .Values.master.useSecurity }}
